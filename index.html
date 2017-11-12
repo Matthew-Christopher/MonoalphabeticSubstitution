@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Substitution Cipher Solver</title>
+    <meta name="author" content="Matthew Christopher">
+    <meta name="description" content="Solve a subsitution cipher here by replacing a letter with another. This is the most basic form of a cipher - a monoalphabetic substitution.">
+    <meta name="keywords" content="cipher,substitution,substitution cipher,matthew christopher,patristocrat,aristocrat,patristocrat cipher,aristocrat cipher">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="main.css" type="text/css">
+  </head>
+
+  <body onload="init();">
+
+    <div class="container">
+
+      <div class="title">Monoalphabetic Substitution</div>
+
+      <textarea rows="1" style="height:1em;" onkeydown="setTimeout(cipherinput(), 0);" onpaste="cipherinput();" name="ciphertext" placeholder="Paste your ciphertext here..." autofocus></textarea>
+
+      <div class="substitutions">
+
+        <h2>Ciphertext</h2>
+
+        <div class="ciphertext">
+
+          <button onclick="clear('A');" name="cipher_A">A</button>
+          <button onclick="clear('B');" name="cipher_B">B</button>
+          <button onclick="clear('C');" name="cipher_C">C</button>
+          <button onclick="clear('D');" name="cipher_D">D</button>
+          <button onclick="clear('E');" name="cipher_E">E</button>
+          <button onclick="clear('F');" name="cipher_F">F</button>
+          <button onclick="clear('G');" name="cipher_G">G</button>
+          <button onclick="clear('H');" name="cipher_H">H</button>
+          <button onclick="clear('I');" name="cipher_I">I</button>
+          <button onclick="clear('J');" name="cipher_J">J</button>
+          <button onclick="clear('K');" name="cipher_K">K</button>
+          <button onclick="clear('L');" name="cipher_L">L</button>
+          <button onclick="clear('M');" name="cipher_M">M</button>
+          <button onclick="clear('N');" name="cipher_N">N</button>
+          <button onclick="clear('O');" name="cipher_O">O</button>
+          <button onclick="clear('P');" name="cipher_P">P</button>
+          <button onclick="clear('Q');" name="cipher_Q">Q</button>
+          <button onclick="clear('R');" name="cipher_R">R</button>
+          <button onclick="clear('S');" name="cipher_S">S</button>
+          <button onclick="clear('T');" name="cipher_T">T</button>
+          <button onclick="clear('U');" name="cipher_U">U</button>
+          <button onclick="clear('V');" name="cipher_V">V</button>
+          <button onclick="clear('W');" name="cipher_W">W</button>
+          <button onclick="clear('X');" name="cipher_X">X</button>
+          <button onclick="clear('Y');" name="cipher_Y">Y</button>
+          <button onclick="clear('Z');" name="cipher_Z">Z</button>
+
+        </div>
+
+        <h2>Plaintext</h2>
+
+        <div class="plaintext">
+
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_A" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_B" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_C" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_D" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_E" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_F" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_G" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_H" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_I" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_J" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_K" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_L" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_M" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_N" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_O" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_P" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_Q" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_R" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_S" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_T" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_U" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_V" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_W" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_X" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_Y" maxlength="1"></input>
+          <input type="text" onpaste="event.preventDefault();" onkeydown="down(event, this);" name="plain_Z" maxlength="1"></input>
+
+        </div>
+
+        <button onclick="copy();" name="copy">Copy decoded message</button>
+
+      </div>
+
+    </div>
+
+  <script src="main.js"></script>
+
+  </body>
+
+</html>
