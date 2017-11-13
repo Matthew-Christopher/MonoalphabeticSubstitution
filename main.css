@@ -11,6 +11,15 @@ html, body {
   height: 100%;
 }
 
+p {
+  width: 100%;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
 .container {
   position: absolute;
   left: 0;
@@ -76,13 +85,14 @@ textarea[name="ciphertext"] {
   padding-left: 10px;
 }
 
-button[name="copy"] {
+button[name="copy"], button[name="clearall"] {
+  display: inline;
   outline: none;
-  margin-top: 16px;
+  margin-top: 32px;
   font-size: 1.25em;
   transition: font-size .25s ease-in-out;
 }
 
-button[name="copy"]:hover {
+button[name="copy"]:hover, button[name="clearall"]:hover {
   font-size: 1.3em;
 }

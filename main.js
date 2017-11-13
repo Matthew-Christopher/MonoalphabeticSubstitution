@@ -2,8 +2,14 @@ let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
 let solved = [];
 let ciphertxt = '';
 
-function clear(btn) {
-  document.getElementsByName('plain_' + btn.toLowerCase())[0].value = '';
+function clr(btn) {
+  document.getElementsByName('plain_' + btn)[0].value = '';
+}
+
+function clrall() {
+  for (let i=0; i<alphabet.length; i++) {
+    document.getElementsByName('plain_' + alphabet[i])[0].value = '';
+  }
 }
 
 function replace() {
@@ -68,10 +74,7 @@ function cipherinput(event, code, paste) {
           temp[i] = temp[i].toLowerCase();
         }
       }
-      console.log(solved);
-      console.log(temp);
       document.getElementsByName('ciphertext')[0].value = temp.join("").replace(/\s/g, '').replace(/[.,\/'"+@#!$%\^&\*;:{}=\-_`~()]/g, "");
-      console.log("Ciphertxt: " + ciphertxt);
       if (event != null)
         replace();
     }, 0);
