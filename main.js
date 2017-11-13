@@ -4,12 +4,15 @@ function clear(btn) {
   document.getElementsByName('plain_' + btn.toLowerCase())[0].value = '';
 }
 
-function replace(a, b) {
-    if (b != null) {
-      let find = a.toUpperCase();
-      let re = new RegExp(find, 'g');
-      document.getElementsByName('ciphertext')[0].value = document.getElementsByName('ciphertext')[0].value.replace(re, b.toLowerCase());
-    }
+function replace() {
+  document.getElementsByName('ciphertext')[0].value = ciphertxt;
+  let temp = ciphertxt;
+  for (let i=0; i<alphabet.length; i++) {
+    let re = new RegExp(alphabet[i], 'g');
+    if (document.getElementsByName('plain_' + alphabet[i])[0].value)
+      temp = temp.replace(re, document.getElementsByName('plain_' + alphabet[i])[0].value);
+    document.getElementsByName('ciphertext')[0].value = temp;
+  }
 }
 
 function focusnext(field) {
@@ -28,6 +31,12 @@ function down(event, field) {
     setTimeout(() => {
       field.value = String.fromCharCode(event.keyCode || event.which).toLowerCase();
       focusnext(field);
+      replace();
+    }, 0);
+  } else if (!((event.keyCode || event.which) == 8 || (event.keyCode || event.which) == 9 || (event.keyCode || event.which) == 46)) {
+    event.preventDefault();
+  } else {
+    setTimeout(() => {
       replace(field.name.substr(-1), field.value.toLowerCase());
     }, 0);
   }
@@ -35,7 +44,8 @@ function down(event, field) {
 
 function cipherinput() {
   setTimeout(() => {
-    document.getElementsByName('ciphertext')[0].value = document.getElementsByName('ciphertext')[0].value.toUpperCase().replace(/\s/g, '').replace(/[.,\/'"+@#!$%\^&\*;:{}=\-_`~()]/g,"");
+    ciphertxt = document.getElementsByName('ciphertext')[0].value.toUpperCase().replace(/\s/g, '').replace(/[.,\/'"+@#!$%\^&\*;:{}=\-_`~()]/g, "");
+    document.getElementsByName('ciphertext')[0].value = document.getElementsByName('ciphertext')[0].value.toUpperCase().replace(/\s/g, '').replace(/[.,\/'"+@#!$%\^&\*;:{}=\-_`~()]/g, "");
   }, 0);
 }
 
@@ -74,7 +84,7 @@ function init () {
 }
 
 function copy() {
-  if (document.getElementsByName('ciphertext')[0].value == null || document.getElementsByName('ciphertext')[0].value == '') {
+  if (document.getElementsByName('ciphertext')[0].value == '') {
     document.getElementsByName('copy')[0].innerHTML = 'Ciphertext is empty';
     setTimeout(() => {
       document.getElementsByName('copy')[0].innerHTML = 'Copy decoded message';
