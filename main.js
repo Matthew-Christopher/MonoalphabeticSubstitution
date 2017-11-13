@@ -12,7 +12,7 @@ function replace() {
     let re = new RegExp(alphabet[i], 'g');
     if (document.getElementsByName('plain_' + alphabet[i])[0].value) {
       ciphtemp = ciphtemp.replace(re, document.getElementsByName('plain_' + alphabet[i])[0].value.toLowerCase());
-      cipherinput(null, -1);
+      cipherinput(null, -1, false);
     }
     document.getElementsByName('ciphertext')[0].value = ciphtemp;
   }
@@ -45,7 +45,7 @@ function down(event, field) {
   }
 }
 
-function cipherinput(event, code) {
+function cipherinput(event, code, paste) {
   if (event == null || ((event.keyCode || event.which) > 64 && (event.keyCode || event.which) < 91 && !event.ctrlKey)) {
     if (event != null) {
       event.preventDefault();
@@ -79,6 +79,12 @@ function cipherinput(event, code) {
     setTimeout(() => {
       document.getElementsByName('ciphertext')[0].value = document.getElementsByName('ciphertext')[0].value.replace(/\s/g, '').replace(/[.,\/'"+@#!$%\^&\*;:{}=\-_`~()]/g, "");
     });
+  }
+  if (paste) {
+    event.preventDefault();
+    document.getElementsByName('ciphertext')[0].value += event.clipboardData.getData("text/plain").toUpperCase().replace(/\s/g, '').replace(/[.,\/'"+@#!$%\^&\*;:{}=\-_`~()]/g, "");
+    ciphertxt = document.getElementsByName('ciphertext')[0].value;
+    replace();
   }
 }
 
