@@ -46,6 +46,7 @@ function cipherinput() {
   setTimeout(() => {
     ciphertxt = document.getElementsByName('ciphertext')[0].value.toUpperCase().replace(/\s/g, '').replace(/[.,\/'"+@#!$%\^&\*;:{}=\-_`~()]/g, "");
     document.getElementsByName('ciphertext')[0].value = document.getElementsByName('ciphertext')[0].value.toUpperCase().replace(/\s/g, '').replace(/[.,\/'"+@#!$%\^&\*;:{}=\-_`~()]/g, "");
+    replace();
   }, 0);
 }
 
