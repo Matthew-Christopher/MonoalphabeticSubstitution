@@ -84,6 +84,7 @@ function cipherinput(event, code, paste) {
     }, 0);
   }
   if (paste) {
+    alert(1);
     event.preventDefault();
     document.getElementsByName('ciphertext')[0].value += event.clipboardData.getData("text/plain").toUpperCase().replace(/\s/g, '').replace(/[.,\/'"+@#!$%\^&\*;:{}=\-_`~()]/g, "");
     ciphertxt = document.getElementsByName('ciphertext')[0].value;
