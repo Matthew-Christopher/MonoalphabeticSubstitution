@@ -82,6 +82,8 @@ function cipherinput(event, code, paste) {
     if ((event.keyCode || event.which) == 8) {
       ciphertxt = ciphertxt.slice(0, -1);
       document.getElementsByName('ciphertext')[0].selectionStart = document.getElementsByName('ciphertext')[0].selectionEnd = document.getElementsByName('ciphertext')[0].value.length;
+    } else if ((event.keyCode || event.which) == 46) {
+      event.preventDefault();
     }
     setTimeout(() => {
       document.getElementsByName('ciphertext')[0].value = document.getElementsByName('ciphertext')[0].value.replace(/\s/g, '').replace(/[.,\/'"+@#!$%\^&\*;:{}=\-_`~()]/g, "");
