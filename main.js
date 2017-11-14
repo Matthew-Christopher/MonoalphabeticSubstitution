@@ -52,6 +52,7 @@ function down(event, field) {
 }
 
 function cipherinput(event, code, paste) {
+  document.getElementsByName('ciphertext')[0].selectionStart = document.getElementsByName('ciphertext')[0].selectionEnd = document.getElementsByName('ciphertext')[0].value.length;
   if (event == null || ((event.keyCode || event.which) > 64 && (event.keyCode || event.which) < 91 && !event.ctrlKey)) {
     if (event != null) {
       event.preventDefault();
@@ -81,7 +82,6 @@ function cipherinput(event, code, paste) {
   } else {
     if ((event.keyCode || event.which) == 8) {
       ciphertxt = ciphertxt.slice(0, -1);
-      document.getElementsByName('ciphertext')[0].selectionStart = document.getElementsByName('ciphertext')[0].selectionEnd = document.getElementsByName('ciphertext')[0].value.length;
     } else if ((event.keyCode || event.which) == 46) {
       event.preventDefault();
     }
