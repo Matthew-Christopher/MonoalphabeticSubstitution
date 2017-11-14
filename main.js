@@ -79,6 +79,10 @@ function cipherinput(event, code, paste) {
         replace();
     }, 0);
   } else {
+    if ((event.keyCode || event.which) == 8) {
+      ciphertxt = ciphertxt.slice(0, -1);
+      document.getElementsByName('ciphertext')[0].selectionStart = document.getElementsByName('ciphertext')[0].selectionEnd = document.getElementsByName('ciphertext')[0].value.length;
+    }
     setTimeout(() => {
       document.getElementsByName('ciphertext')[0].value = document.getElementsByName('ciphertext')[0].value.replace(/\s/g, '').replace(/[.,\/'"+@#!$%\^&\*;:{}=\-_`~()]/g, "");
     }, 0);
